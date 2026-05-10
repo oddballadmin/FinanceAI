@@ -10,6 +10,8 @@ FinanceAI/
 |-- app/
 |-- assets/
 |-- components/
+|-- config/
+|-- desktop/
 |-- features/
 |-- hooks/
 |-- instructions/
@@ -17,14 +19,14 @@ FinanceAI/
 |-- scripts/
 |-- store/
 |-- supabase/
+|-- web/
 |-- __tests__/
-|-- .env.example
 |-- .gitignore
-|-- app.json
+|-- app.config.js
 |-- eas.json
 |-- eslint.config.js
-|-- global.css
 |-- metro.config.js
+|-- nativewind-env.d.ts
 |-- package.json
 |-- tailwind.config.js
 |-- tsconfig.json
@@ -32,7 +34,7 @@ FinanceAI/
 ```
 
 ## `app/`
-Expo Router routes live here. Route files should be thin and should delegate business logic to `features/`.
+Expo Router routes live here for mobile and web. Route files should be thin and should delegate business logic to `features/`.
 
 ```text
 app/
@@ -73,6 +75,28 @@ Rules:
 - Keep route components mostly focused on layout, params, and composition.
 - Put feature-specific data fetching, forms, and calculations in `features/`.
 - Protect authenticated routes at layout boundaries.
+- Keep web behavior in shared routes where practical. Use platform-specific files only when a real platform difference requires it.
+
+## `config/`
+Tool configuration bodies live here. Root config files may remain as adapters because Expo, Metro, Babel, Tailwind, TypeScript, and npm discover some files only from the project root.
+
+```text
+config/
+|-- app.config.js
+|-- babel.config.js
+|-- global.css
+|-- global.d.ts
+|-- metro.config.js
+|-- tailwind.config.js
+`-- tsconfig.json
+```
+
+Rules:
+
+- Keep root config files as thin adapters when a tool requires root discovery.
+- Put editable config logic in `config/` when the tool allows it.
+- `package.json` stays at the root because npm requires it there.
+- `nativewind-env.d.ts` stays at the root because NativeWind may generate it there.
 
 ## `components/`
 Reusable UI components live here. These components should not know about finance-specific business rules.
@@ -166,6 +190,24 @@ Rules:
 - Keep feature calculations in `features/<feature>/utils`.
 - Export the public feature surface from `features/<feature>/index.ts`.
 - Move code to `lib/` only when at least two features need it.
+
+## `web/`
+Web-specific deployment notes, static hosting adapters, and web-only assets live here. The web application itself should use the shared Expo Router routes in `app/`.
+
+Rules:
+
+- Do not fork business logic for web.
+- Prefer shared components and platform-specific files before introducing web-only code.
+- Keep deployment/provider configuration here only when it cannot live in root config or CI.
+
+## `desktop/`
+Desktop packaging code and notes live here once the desktop shell is selected.
+
+Rules:
+
+- The desktop app should consume the Expo web build.
+- Do not duplicate route, feature, data, or UI logic in `desktop/`.
+- Keep desktop shell concerns, such as window management and installer packaging, separate from shared app code.
 
 ## `lib/`
 Shared configuration, clients, types, and utilities live here.

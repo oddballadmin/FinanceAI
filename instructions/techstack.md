@@ -13,10 +13,16 @@ This file defines the approved technology choices for the project. Agents should
 ## Core App
 - Framework: Expo with React Native and TypeScript
 - Navigation: Expo Router
-- Platforms: iOS, Android, and web where practical
+- Platforms: iOS, Android, web, and desktop packaging where practical
 - Language: TypeScript in strict mode
 - Styling: NativeWind with a small shared design token layer
 - Icons: `lucide-react-native` unless a platform-specific icon is required
+
+## Web And Desktop
+- Web: Expo Router web through the shared `app/` route tree
+- Desktop: package the Expo web build with a desktop shell when the app shell is stable
+- Desktop shell choice: decide later between Tauri and Electron based on native integration needs
+- Rule: do not fork business logic, data access, or feature UI for desktop unless a platform-specific requirement forces it
 
 ## State And Data
 - Server state: TanStack Query
