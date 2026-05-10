@@ -1,4 +1,4 @@
-import './global.css';
+import './config/global.css';
 
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
