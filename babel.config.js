@@ -1,1 +1,9 @@
-module.exports = require('./config/babel.config');
+module.exports = (api) => {
+  api.cache(true);
+  return {
+    presets: [
+      ['babel-preset-expo', { jsxImportSource: 'nativewind' }],
+      'nativewind/babel',
+    ],
+  };
+};

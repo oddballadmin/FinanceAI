@@ -1,7 +1,7 @@
 import { Link, Stack } from 'expo-router';
 import { Text, View } from 'react-native';
 
-export default function NotFoundRoute() {
+const NotFoundRoute = () => {
   return (
     <>
       <Stack.Screen options={{ title: 'Not Found' }} />
@@ -15,4 +15,6 @@ export default function NotFoundRoute() {
       </View>
     </>
   );
-}
+};
+
+export default NotFoundRoute;

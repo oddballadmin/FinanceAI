@@ -9,7 +9,7 @@ import {
 
 const tabIconColor = (focused: boolean) => (focused ? '#0f172a' : '#64748b');
 
-export default function TabsLayout() {
+const TabsLayout = () => {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: '#0f172a' }}>
       <Tabs.Screen
@@ -59,4 +59,6 @@ export default function TabsLayout() {
       />
     </Tabs>
   );
-}
+};
+
+export default TabsLayout;

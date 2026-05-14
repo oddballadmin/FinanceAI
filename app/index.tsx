@@ -1,5 +1,7 @@
 import { Redirect } from 'expo-router';
 
-export default function IndexRoute() {
+const IndexRoute = () => {
   return <Redirect href="/(tabs)" />;
-}
+};
+
+export default IndexRoute;

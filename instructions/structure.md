@@ -10,7 +10,6 @@ FinanceAI/
 |-- app/
 |-- assets/
 |-- components/
-|-- config/
 |-- desktop/
 |-- features/
 |-- hooks/
@@ -25,6 +24,8 @@ FinanceAI/
 |-- app.config.js
 |-- eas.json
 |-- eslint.config.js
+|-- global.css
+|-- global.d.ts
 |-- metro.config.js
 |-- nativewind-env.d.ts
 |-- package.json
@@ -76,27 +77,6 @@ Rules:
 - Put feature-specific data fetching, forms, and calculations in `features/`.
 - Protect authenticated routes at layout boundaries.
 - Keep web behavior in shared routes where practical. Use platform-specific files only when a real platform difference requires it.
-
-## `config/`
-Tool configuration bodies live here. Root config files may remain as adapters because Expo, Metro, Babel, Tailwind, TypeScript, and npm discover some files only from the project root.
-
-```text
-config/
-|-- app.config.js
-|-- babel.config.js
-|-- global.css
-|-- global.d.ts
-|-- metro.config.js
-|-- tailwind.config.js
-`-- tsconfig.json
-```
-
-Rules:
-
-- Keep root config files as thin adapters when a tool requires root discovery.
-- Put editable config logic in `config/` when the tool allows it.
-- `package.json` stays at the root because npm requires it there.
-- `nativewind-env.d.ts` stays at the root because NativeWind may generate it there.
 
 ## `components/`
 Reusable UI components live here. These components should not know about finance-specific business rules.

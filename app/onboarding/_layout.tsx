@@ -1,5 +1,7 @@
 import { Stack } from 'expo-router';
 
-export default function OnboardingLayout() {
+const OnboardingLayout = () => {
   return <Stack />;
-}
+};
+
+export default OnboardingLayout;

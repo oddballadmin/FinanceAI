@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 
-export default function DashboardRoute() {
+const DashboardRoute = () => {
   return (
     <View className="flex-1 bg-white p-6">
       <Text className="text-2xl font-semibold text-slate-900">Dashboard</Text>
@@ -9,4 +9,6 @@ export default function DashboardRoute() {
       </Text>
     </View>
   );
-}
+};
+
+export default DashboardRoute;

@@ -1,8 +1,8 @@
-import '../config/global.css';
+import '../global.css';
 
 import { Stack } from 'expo-router';
 
-export default function RootLayout() {
+const RootLayout = () => {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ title: 'FinanceAI' }} />
@@ -15,4 +15,6 @@ export default function RootLayout() {
       <Stack.Screen name="+not-found" />
     </Stack>
   );
-}
+};
+
+export default RootLayout;

@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 
-export default function InitialBalanceRoute() {
+const InitialBalanceRoute = () => {
   return (
     <View className="flex-1 bg-white p-6">
       <Text className="text-2xl font-semibold text-slate-900">
@@ -8,4 +8,6 @@ export default function InitialBalanceRoute() {
       </Text>
     </View>
   );
-}
+};
+
+export default InitialBalanceRoute;
