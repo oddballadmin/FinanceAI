@@ -17,6 +17,7 @@ FinanceAI/
 |-- lib/
 |-- scripts/
 |-- store/
+|-- styles/
 |-- supabase/
 |-- web/
 |-- __tests__/
@@ -24,7 +25,6 @@ FinanceAI/
 |-- app.config.js
 |-- eas.json
 |-- eslint.config.js
-|-- global.css
 |-- global.d.ts
 |-- metro.config.js
 |-- nativewind-env.d.ts
@@ -258,6 +258,22 @@ Rules:
 - Do not mirror server state in Zustand.
 - Use TanStack Query for Supabase-backed data.
 - Persist only non-sensitive values.
+
+## `styles/`
+Application CSS lives here.
+
+```text
+styles/
+|-- global.css
+`-- themes.css
+```
+
+Rules:
+
+- `styles/global.css` is the NativeWind CSS entrypoint.
+- `styles/themes.css` owns theme variables and palette selectors.
+- Add new palettes in both `styles/themes.css` and `lib/constants/themes.ts`.
+- Components should use semantic app colors from Tailwind, such as `bg-app-background` and `text-app-foreground`.
 
 ## `supabase/`
 Database, functions, and local Supabase configuration live here.

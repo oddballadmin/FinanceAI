@@ -38,6 +38,7 @@ Later features may include bank linking, AI transaction categorization, PDF repo
 - Business domains live in `features/`.
 - Shared clients, constants, types, and utilities live in `lib/`.
 - Shared hooks live in `hooks/`.
+- CSS lives in `styles/`; theme tokens live in `styles/themes.css`.
 - Zustand client-only stores live in `store/`.
 - Supabase schema, migrations, functions, and seed data live in `supabase/`.
 - Web-specific deployment notes live in `web/`; the web app still uses shared `app/` routes.
@@ -61,6 +62,7 @@ export default SignupRoute;
 - Keep route files thin; put business logic in `features/`.
 - Use the `@/` alias for app imports.
 - Use NativeWind for styling.
+- Use semantic theme classes such as `bg-app-background`, `bg-app-surface`, `text-app-foreground`, and `bg-app-primary` instead of hard-coded palette colors.
 - Use `lucide-react-native` for icons unless a platform-specific icon is required.
 - Prefer Expo-managed libraries when adding native functionality.
 - Keep code explicit and boring over clever abstractions.
@@ -104,6 +106,14 @@ Respect the current repository ignore policy for env files. Real secrets must no
 - Desktop should be a packaging shell around the Expo web build when ready.
 - Do not duplicate app routes, features, or Supabase access in `desktop/`.
 - Decide later between Tauri and Electron based on actual native integration needs.
+
+## Theme System
+- Theme variables are defined in `styles/themes.css`.
+- Global Tailwind setup lives in `styles/global.css`.
+- Theme metadata for settings UI lives in `lib/constants/themes.ts`.
+- Runtime theme selection uses `store/useThemeStore.ts`.
+- Add new palettes by updating both `styles/themes.css` and `lib/constants/themes.ts`.
+- Keep app components on semantic tokens; do not bind feature UI directly to one palette.
 
 ## Source Of Truth
 - If code and docs disagree, inspect the code first, then update code or docs in the same task.
@@ -150,4 +160,3 @@ Do not run `npm audit fix --force` without explicit approval; it may introduce b
 - Data work: `supabase/migrations/`, `supabase/seed.sql`, `lib/supabase/`
 - Backend work: `supabase/functions/`
 - DevOps/docs: root config, scripts, CI, `instructions/`, `README.md`
-

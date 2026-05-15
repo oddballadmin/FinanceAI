@@ -27,6 +27,9 @@ module.exports = {
       bundler: 'metro',
       favicon: './assets/favicon.png',
     },
+    experiments: {
+      tsconfigPaths: true,
+    },
     plugins: ['expo-router', 'expo-secure-store'],
   },
 };
