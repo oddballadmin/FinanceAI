@@ -27,6 +27,7 @@ This file defines the approved technology choices for the project. Agents should
 ## State And Data
 - Server state: TanStack Query
 - Local UI/preferences state: Zustand
+- Local settings persistence: MMKV-backed Zustand stores
 - Forms: React Hook Form
 - Validation: Zod
 - Dates: `date-fns`
@@ -43,7 +44,9 @@ This file defines the approved technology choices for the project. Agents should
 ## Local Persistence
 - Supabase auth storage: use the recommended React Native storage adapter for the installed Supabase version.
 - Secure values: Expo SecureStore when needed.
-- Non-sensitive app cache/preferences: MMKV or Zustand persistence.
+- Non-sensitive app settings/preferences: MMKV through Zustand persistence.
+- Persist settings by domain, with one typed store and storage key per coherent settings area, such as theme or display preferences.
+- Use TanStack Query persistence only for server-state cache/offline restore, not as the owner of local-only preferences.
 
 ## UI And Visualization
 - Base components: local components in `components/ui`

@@ -39,7 +39,7 @@ Later features may include bank linking, AI transaction categorization, PDF repo
 - Shared clients, constants, types, and utilities live in `lib/`.
 - Shared hooks live in `hooks/`.
 - CSS lives in `styles/`; theme tokens live in `styles/themes.css`.
-- Zustand client-only stores live in `store/`.
+- Zustand client-only stores live in `store/`, with persisted settings stores grouped under `store/settings/`.
 - Supabase schema, migrations, functions, and seed data live in `supabase/`.
 - Web-specific deployment notes live in `web/`; the web app still uses shared `app/` routes.
 - Desktop packaging notes/code live in `desktop/`; the desktop app should consume the Expo web build when that shell is chosen.
@@ -70,6 +70,7 @@ export default SignupRoute;
 ## State, Data, And Forms
 - Server state: TanStack Query
 - Local UI/preferences state: Zustand
+- Local non-sensitive settings persistence: MMKV through typed Zustand stores
 - Forms: React Hook Form
 - Validation: Zod
 - Dates: `date-fns`
@@ -111,7 +112,8 @@ Respect the current repository ignore policy for env files. Real secrets must no
 - Theme variables are defined in `styles/themes.css`.
 - Global Tailwind setup lives in `styles/global.css`.
 - Theme metadata for settings UI lives in `lib/constants/themes.ts`.
-- Runtime theme selection uses `store/useThemeStore.ts`.
+- Runtime theme selection uses `store/settings/useThemeSettingsStore.ts`.
+- Settings UI composition lives in `features/settings/`.
 - Add new palettes by updating both `styles/themes.css` and `lib/constants/themes.ts`.
 - Keep app components on semantic tokens; do not bind feature UI directly to one palette.
 

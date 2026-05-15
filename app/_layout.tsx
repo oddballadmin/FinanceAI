@@ -1,11 +1,12 @@
 import '../styles/global.css';
 
-import { useThemeStore } from '@/store';
+import { getThemeById, useThemeSettingsStore } from '@/store/settings';
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
 const RootLayout = () => {
-  const activeTheme = useThemeStore((state) => state.activeTheme);
+  const themeId = useThemeSettingsStore((state) => state.themeId);
+  const activeTheme = getThemeById(themeId);
 
   return (
     <View className={`${activeTheme.className} flex-1 bg-app-background`}>

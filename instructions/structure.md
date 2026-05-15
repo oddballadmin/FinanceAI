@@ -247,8 +247,13 @@ Zustand stores for client-only state live here.
 
 ```text
 store/
+|-- settings/
+|   |-- keys.ts
+|   |-- settingsStorage.ts
+|   |-- themeSettings.ts
+|   |-- useThemeSettingsStore.ts
+|   `-- index.ts
 |-- useFilterStore.ts
-|-- usePreferencesStore.ts
 |-- useModalStore.ts
 `-- index.ts
 ```
@@ -258,6 +263,9 @@ Rules:
 - Do not mirror server state in Zustand.
 - Use TanStack Query for Supabase-backed data.
 - Persist only non-sensitive values.
+- Group persisted settings stores under `store/settings/`.
+- Prefer one settings store per coherent settings domain instead of one large settings blob.
+- Keep each persisted settings domain typed, versioned, and keyed independently for future migration and Supabase sync.
 
 ## `styles/`
 Application CSS lives here.
